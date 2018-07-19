@@ -1,0 +1,23 @@
+{
+  "name": "@jerryshen520/animate-scroll",
+  "version": "0.0.1",
+  "description": "A javascript library which could scroll to the given position with animation",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npx babel src --out-dir dist"
+  },
+  "keywords": [
+    "scroll",
+    "animation"
+  ],
+  "author": "Jerry Shen",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperJerryshen/animate-scroll.git"
+  }
+}
