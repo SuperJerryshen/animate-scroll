@@ -1,14 +1,31 @@
+/**
+ * Constructor Scroller
+ */
 export default class Scroller {
-  constructor() {
+  constructor(wrap) {
     this.timer = null;
+    this.wrap = wrap || null;
   }
+
+  /**
+   * scroll without animation
+   * @param {*} top 
+   */
+  scroll(top) {
+    if (this.wrap) {
+      this.wrap.scrollTop = top;
+    } else {
+      window.scrollTo(0, top);
+    }
+  }
+
   /**
    * scroll to the position given
    * @param {*} h
    * @param {*} config
    */
   scrollToY(h = 0, config = {}) {
-    const y = window.scrollY;
+    const y = this.wrap ? this.wrap.scrollTop : window.scrollY;
     let top = y;
     let distance = y - h;
     let gap = distance / 16;
@@ -38,7 +55,7 @@ export default class Scroller {
           clearInterval(this.timer);
         }
       }
-      window.scrollTo(0, top);
+      this.scroll(top)
     }, 16);
   }
 }

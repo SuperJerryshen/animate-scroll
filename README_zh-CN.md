@@ -1,41 +1,39 @@
 # Animate-Scroll
 
-> Scroll to position with animation, through using Animate-Scroll
+> 使用 Animate-Scroll，可以利用动画过渡至指定高度
 
-[中文文档](https://github.com/SuperJerryshen/animate-scroll/blob/master/README_zh-CN.md)
-
-## Install
+## 安装
 
 ```bash
-# use npm
+# 使用 npm
 npm install --save @jerryshen520/animate-scroll
 
-# use yarn
+# 使用 yarn
 yarn add @jerryshen520/animate-scroll
 ```
 
-## Use
+## 使用
 
-### Only scroll in window
+### 仅在 window 下滚动
 
 ```javascript
 import { scrollToY } from '@jerryshen520/animate-scroll';
 
-// scroll
+// 滚动
 scrollToY(1000);
 scrollToY(0);
 ```
 
-### Scroll in wrapper
+### 在内部可滚动的容器内
 
 ```javascript
 import { Scroller } from '@jerryshen520/animate-scroll';
 
-// get DOM element
+// 获取dom元素
 const wrap = document.getElementById('wrap');
 const scroller = new Scroller(wrap);
 
-// scroll
+// 滚动
 scroller.scrollToY(1000);
 scroller.scrollToY(0);
 ```
@@ -44,11 +42,11 @@ scroller.scrollToY(0);
 
 ### scrollToY
 
-- params(`YCoord`: `number`, `config`?: `object`)
+- 参数(`YCoord`: `number`, `config`: `object`)
 
 ## Todo List
 
-- [ ] custom effect of transition
-- [ ] custom duration of transition
-- [x] support on scrolling in wrapper
-- [ ] support on canceling scroll
+- [ ] 自定义过渡效果
+- [ ] 自定义过渡时间
+- [x] 支持容器内的滚动
+- [ ] 支持取消滚动
