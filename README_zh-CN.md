@@ -27,7 +27,7 @@ scrollToY(0);
 ### 在内部可滚动的容器内
 
 ```javascript
-import { Scroller } from '@jerryshen520/animate-scroll';
+import Scroller from '@jerryshen520/animate-scroll';
 
 // 获取dom元素
 const wrap = document.getElementById('wrap');
@@ -42,7 +42,7 @@ scroller.scrollToY(0);
 
 ### scrollToY
 
-- 参数(`YCoord`: `number`, `config`: `object`)
+- 参数(`YCoord`: `number`, `config`?: `object`)
 
 ## Todo List
 

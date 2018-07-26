@@ -8,20 +8,40 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * Constructor Scroller
+ */
 var Scroller = function () {
-  function Scroller() {
+  function Scroller(wrap) {
     _classCallCheck(this, Scroller);
 
     this.timer = null;
+    this.wrap = wrap || null;
   }
+
   /**
-   * scroll to the position given
-   * @param {*} h
-   * @param {*} config
+   * scroll without animation
+   * @param {*} top 
    */
 
 
   _createClass(Scroller, [{
+    key: "scroll",
+    value: function scroll(top) {
+      if (this.wrap) {
+        this.wrap.scrollTop = top;
+      } else {
+        window.scrollTo(0, top);
+      }
+    }
+
+    /**
+     * scroll to the position given
+     * @param {*} h
+     * @param {*} config
+     */
+
+  }, {
     key: "scrollToY",
     value: function scrollToY() {
       var _this = this;
@@ -29,7 +49,7 @@ var Scroller = function () {
       var h = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-      var y = window.scrollY;
+      var y = this.wrap ? this.wrap.scrollTop : window.scrollY;
       var top = y;
       var distance = y - h;
       var gap = distance / 16;
@@ -59,7 +79,7 @@ var Scroller = function () {
             clearInterval(_this.timer);
           }
         }
-        window.scrollTo(0, top);
+        _this.scroll(top);
       }, 16);
     }
   }]);

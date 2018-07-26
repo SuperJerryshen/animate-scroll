@@ -13,3 +13,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var scroller = exports.scroller = new _Scroller2.default();
 var scrollToY = exports.scrollToY = _Scroller2.default.prototype.scrollToY.bind(scroller);
+exports.default = _Scroller2.default;

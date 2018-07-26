@@ -29,7 +29,7 @@ scrollToY(0);
 ### Scroll in wrapper
 
 ```javascript
-import { Scroller } from '@jerryshen520/animate-scroll';
+import Scroller from '@jerryshen520/animate-scroll';
 
 // get DOM element
 const wrap = document.getElementById('wrap');
