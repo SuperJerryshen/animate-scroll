@@ -86,5 +86,5 @@ new Scroller(domContainer);
 - [ ] custom effect of transition
 - [ ] custom duration of transition
 - [x] support for scrolling on wrapper
-- [ ] support for canceling scroll
+- [x] support for canceling scroll
 - [ ] add some `demos` for usage

@@ -4,7 +4,7 @@
   "description": "A javascript library which could scroll to the given position with animation",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npx babel src --out-dir dist"
+    "build": "rm -rf ./dist/* && npx babel src --out-file dist/index.js"
   },
   "keywords": [
     "scroll",
