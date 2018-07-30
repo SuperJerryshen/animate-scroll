@@ -1,6 +1,6 @@
 {
   "name": "@jerryshen520/animate-scroll",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A javascript library which could scroll to the given position with animation",
   "main": "dist/index.js",
   "scripts": {
