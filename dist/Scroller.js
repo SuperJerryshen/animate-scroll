@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -13,20 +13,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 var Scroller = function () {
   function Scroller(wrap) {
+    var _this = this;
+
     _classCallCheck(this, Scroller);
 
     this.timer = null;
     this.wrap = wrap || null;
+    this.container = wrap || window;
+    this.cancelFunc = function () {
+      _this.cancel();
+    };
   }
 
   /**
    * scroll without animation
-   * @param {*} top 
+   * @param {*} top
    */
 
 
   _createClass(Scroller, [{
-    key: "scroll",
+    key: 'scroll',
     value: function scroll(top) {
       if (this.wrap) {
         this.wrap.scrollTop = top;
@@ -36,26 +42,42 @@ var Scroller = function () {
     }
 
     /**
+     * stop the scroll
+     */
+
+  }, {
+    key: 'cancel',
+    value: function cancel() {
+      // clear timer if `this.timer` exists
+      this.timer && clearInterval(this.timer);
+      // remove the wheel event listener when the scroll is stopped
+      this.container.removeEventListener('wheel', this.cancelFunc);
+    }
+
+    /**
      * scroll to the position given
      * @param {*} h
      * @param {*} config
      */
 
   }, {
-    key: "scrollToY",
+    key: 'scrollToY',
     value: function scrollToY() {
-      var _this = this;
+      var _this2 = this;
 
       var h = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
       var y = this.wrap ? this.wrap.scrollTop : window.scrollY;
+      var container = this.wrap || window;
       var top = y;
       var distance = y - h;
       var gap = distance / 16;
       if (h === top) return;
       // if this.timer is not null, then clearInterval
-      this.timer && clearInterval(this.timer);
+      this.cancel();
+      // add wheel event, used for stopping the scroll automatically when user uses the wheel
+      container.addEventListener('wheel', this.cancelFunc);
       this.timer = setInterval(function () {
         // two situations: distance > 0 & distance < 0
         if (distance > 0) {
@@ -66,7 +88,7 @@ var Scroller = function () {
           }
           if (top <= h + 1) {
             top = h;
-            clearInterval(_this.timer);
+            clearInterval(_this2.timer);
           }
         } else {
           if (top > -gap * 6) {
@@ -76,10 +98,10 @@ var Scroller = function () {
           }
           if (top >= h - 1) {
             top = h;
-            clearInterval(_this.timer);
+            clearInterval(_this2.timer);
           }
         }
-        _this.scroll(top);
+        _this2.scroll(top);
       }, 16);
     }
   }]);

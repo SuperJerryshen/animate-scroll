@@ -59,7 +59,7 @@ new Scroller(domContainer);
 
 - 函数
 - 参数(`YCoord`: `number`, `config`?: `object`)
-- Notes
+- 说明
 
 > 该函数用于在 window 对象上的动态滚动。
 
@@ -71,9 +71,18 @@ new Scroller(domContainer);
 
 > 该函数用于 `Scroller` 实例上，无过渡动画的滚动。
 
+### Scroller.prototype.cancel
+
+- 函数
+- 参数(无)
+- 说明
+
+> 此函数用于取消现有的滚动。
+
 ## Todo List
 
 - [ ] 自定义过渡效果
 - [ ] 自定义过渡时间
 - [x] 支持容器内的滚动
-- [ ] 支持取消滚动
+- [x] 支持取消滚动
+- [ ] 添加一些 `demo`

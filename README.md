@@ -73,9 +73,18 @@ new Scroller(domContainer);
 
 > This function is used for scrolling to the position with **NO** transition on `Scroller` instance.
 
+### Scroller.prototype.cancel
+
+- Function
+- Params(null)
+- Notes
+
+> This function is used for stopping the current scroll.
+
 ## Todo List
 
 - [ ] custom effect of transition
 - [ ] custom duration of transition
 - [x] support for scrolling on wrapper
 - [ ] support for canceling scroll
+- [ ] add some `demos` for usage
