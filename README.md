@@ -14,9 +14,9 @@ npm install --save @jerryshen520/animate-scroll
 yarn add @jerryshen520/animate-scroll
 ```
 
-## Use
+## Usage
 
-### Only scroll in window
+### Only scroll on window
 
 ```javascript
 import { scrollToY } from '@jerryshen520/animate-scroll';
@@ -26,7 +26,7 @@ scrollToY(1000);
 scrollToY(0);
 ```
 
-### Scroll in wrapper
+### Scroll on container
 
 ```javascript
 import Scroller from '@jerryshen520/animate-scroll';
@@ -42,13 +42,40 @@ scroller.scrollToY(0);
 
 ## API
 
+### Scroller
+
+- Constructor
+- Params(`domContainer`)
+- Usage
+
+```javascript
+// new scroller on window
+new Scroller();
+
+// new scroller on DOM element
+const domContainer = document.createElement('div');
+new Scroller(domContainer);
+```
+
 ### scrollToY
 
-- params(`YCoord`: `number`, `config`?: `object`)
+- Function
+- Params(`YCoord`: `number`, `config`?: `object`)
+- Notes
+
+> This function is used for scrolling to the position with transition on `window`.
+
+### Scroller.prototype.scroll
+
+- Function
+- Params(`YCoord`: `number`)
+- Notes
+
+> This function is used for scrolling to the position with **NO** transition on `Scroller` instance.
 
 ## Todo List
 
 - [ ] custom effect of transition
 - [ ] custom duration of transition
-- [x] support on scrolling in wrapper
-- [ ] support on canceling scroll
+- [x] support for scrolling on wrapper
+- [ ] support for canceling scroll

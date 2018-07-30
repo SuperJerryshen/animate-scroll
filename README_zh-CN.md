@@ -40,9 +40,36 @@ scroller.scrollToY(0);
 
 ## API
 
+### Scroller
+
+- 构造函数
+- 参数(`domContainer`)
+- 使用
+
+```javascript
+// 在`window`对象上生成新的`Scroller`实例
+new Scroller();
+
+// 在`DOM`元素上生成新的`Scroller`实例
+const domContainer = document.createElement('div');
+new Scroller(domContainer);
+```
+
 ### scrollToY
 
+- 函数
 - 参数(`YCoord`: `number`, `config`?: `object`)
+- Notes
+
+> 该函数用于在 window 对象上的动态滚动。
+
+### Scroller.prototype.scroll
+
+- 函数
+- 参数(`YCoord`: `number`)
+- 说明
+
+> 该函数用于 `Scroller` 实例上，无过渡动画的滚动。
 
 ## Todo List
 
