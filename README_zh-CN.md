@@ -22,6 +22,12 @@ import { scrollToY } from '@jerryshen520/animate-scroll';
 // 滚动
 scrollToY(1000);
 scrollToY(0);
+
+// 自定义配置的滚动
+scrollToY(1000, {
+  duration: 1200,
+  easing: 'linear',
+});
 ```
 
 ### 在内部可滚动的容器内
@@ -55,10 +61,24 @@ const domContainer = document.createElement('div');
 new Scroller(domContainer);
 ```
 
-### scrollToY
+### Scroller.prototype.scrollToY
 
 - 函数
 - 参数(`YCoord`: `number`, `config`?: `object`)
+
+`config`'可用的配置选项：
+
+```javascript
+{
+  // 支持贝塞尔模式，参数就类似于这个: [0, 0, 1, 1]
+  // 可用的内置字符过渡效果:
+  // 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'
+  easing: 'ease'; // 默认值
+  // 过渡时间
+  duration: 600; // 默认值, 毫秒
+}
+```
+
 - 说明
 
 > 该函数用于在 window 对象上的动态滚动。
@@ -81,8 +101,11 @@ new Scroller(domContainer);
 
 ## Todo List
 
-- [ ] 自定义过渡效果
-- [ ] 自定义过渡时间
+- [x] 自定义过渡效果
+- [x] 自定义过渡时间
 - [x] 支持容器内的滚动
 - [x] 支持取消滚动
-- [ ] 添加一些 `demo`
+- [ ] 支持更多自定义配置
+- [ ] 添加使用 `demo` 页面
+- [ ] 使用 `Typescript`
+- [ ] 添加单元测试

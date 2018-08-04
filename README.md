@@ -24,6 +24,12 @@ import { scrollToY } from '@jerryshen520/animate-scroll';
 // scroll
 scrollToY(1000);
 scrollToY(0);
+
+// scroll with configure
+scrollToY(1000, {
+  duration: 1200,
+  easing: 'linear',
+});
 ```
 
 ### Scroll on container
@@ -57,10 +63,24 @@ const domContainer = document.createElement('div');
 new Scroller(domContainer);
 ```
 
-### scrollToY
+### Scroller.prototype.scrollToY
 
 - Function
 - Params(`YCoord`: `number`, `config`?: `object`)
+
+available `config`'s options：
+
+```javascript
+{
+  // support bezier: param like this: [0, 0, 1, 1]
+  // available built-in string option:
+  // 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'
+  easing: 'ease'; // default
+  // transition time
+  duration: 600; // default, millisecond
+}
+```
+
 - Notes
 
 > This function is used for scrolling to the position with transition on `window`.
@@ -83,8 +103,11 @@ new Scroller(domContainer);
 
 ## Todo List
 
-- [ ] custom effect of transition
-- [ ] custom duration of transition
+- [x] custom effect of transition
+- [x] custom duration of transition
 - [x] support for scrolling on wrapper
 - [x] support for canceling scroll
-- [ ] add some `demos` for usage
+- [ ] support more custom configure
+- [ ] add `demos` page for usage
+- [ ] use `Typescript`
+- [ ] add unit test
