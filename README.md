@@ -35,7 +35,7 @@ scrollToY(1000, {
 ### Scroll on container
 
 ```javascript
-import Scroller from '@jerryshen520/animate-scroll';
+import { Scroller } from '@jerryshen520/animate-scroll';
 
 // get DOM element
 const wrap = document.getElementById('wrap');
@@ -107,6 +107,7 @@ available `config`'s options：
 - [x] custom duration of transition
 - [x] support for scrolling on wrapper
 - [x] support for canceling scroll
+- [x] use `webpack` for packaging project
 - [ ] support more custom configure
 - [ ] add `demos` page for usage
 - [ ] use `Typescript`

@@ -1,10 +1,11 @@
 {
   "name": "@jerryshen520/animate-scroll",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A javascript library which could scroll to the given position with animation",
-  "main": "dist/index.js",
+  "main": "dist/animate-scroll.js",
   "scripts": {
-    "build": "rm -rf ./dist/* && npx babel src --out-file dist/index.js"
+    "build": "rm -rf ./dist/* && npx babel src --out-file dist/index.js",
+    "build:webpack": "node build/build.js"
   },
   "keywords": [
     "scroll",
@@ -16,8 +17,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.1",
+    "ora": "^3.0.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.16.4"
   },
   "repository": {
     "type": "git",

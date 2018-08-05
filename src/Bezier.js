@@ -5,7 +5,7 @@ class Bezier {
     this.controlPoints = [x1, y1, x2, y2];
     this.initialPoints = [0, 0, 1, 1];
     this.coords = null;
-    this.this.getCoordAmount(precision);
+    this.getCoordAmount(precision);
   }
 
   /**

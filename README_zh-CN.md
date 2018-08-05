@@ -33,7 +33,7 @@ scrollToY(1000, {
 ### 在内部可滚动的容器内
 
 ```javascript
-import Scroller from '@jerryshen520/animate-scroll';
+import { Scroller } from '@jerryshen520/animate-scroll';
 
 // 获取dom元素
 const wrap = document.getElementById('wrap');
@@ -105,6 +105,7 @@ new Scroller(domContainer);
 - [x] 自定义过渡时间
 - [x] 支持容器内的滚动
 - [x] 支持取消滚动
+- [x] 使用`webpack`打包项目
 - [ ] 支持更多自定义配置
 - [ ] 添加使用 `demo` 页面
 - [ ] 使用 `Typescript`
