@@ -22,7 +22,7 @@ export default class Scroller {
   container: HTMLElement;
   cancelFunc?(): void;
 
-  constructor(wrap: any) {
+  constructor(wrap?: any) {
     this.timer = null;
     this.wrap = wrap || null;
     this.container = wrap || window;
