@@ -1,10 +1,17 @@
 class Bezier {
-  constructor(x1 = 0.25, y1 = 0.1, x2 = 0.25, y2 = 1) {
+  constructor(x1 = 0.25, y1 = 0.1, x2 = 0.25, y2 = 1, config = {}) {
+    // precision is the amount of points which are stored in this.coords
+    const { precision = 120 } = config;
     this.controlPoints = [x1, y1, x2, y2];
     this.initialPoints = [0, 0, 1, 1];
     this.coords = null;
+    this.this.getCoordAmount(precision);
   }
 
+  /**
+   * get a point's coord on the basis of bezier curve
+   * @param {*} t ratio in the definition of bezier curve
+   */
   getCoord(t) {
     let _t = 1 - t;
     const [x1, y1, x2, y2] = this.controlPoints;
@@ -16,8 +23,12 @@ class Bezier {
     return [parseFloat(px.toFixed(3), 10), parseFloat(py.toFixed(3), 10)];
   }
 
+  /**
+   * input the x-axis coord
+   * output the y-axis coord
+   * @param {*} x x-axis coord, scope: [0, 1]
+   */
   getY(x) {
-    this.getCoordAmount(120);
     if (x >= 1) {
       return 1;
     }
@@ -38,6 +49,10 @@ class Bezier {
     return k * x + b;
   }
 
+  /**
+   * get some point on bezier curve
+   * @param {*} num the amount of point
+   */
   getCoordAmount(num) {
     const step = 1 / (num + 1);
     const result = [];

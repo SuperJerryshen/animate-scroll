@@ -16,13 +16,25 @@ var Bezier = function () {
     var y1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.1;
     var x2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.25;
     var y2 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+    var config = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
 
     _classCallCheck(this, Bezier);
+
+    // precision is the amount of points which are stored in this.coords
+    var _config$precision = config.precision,
+        precision = _config$precision === undefined ? 120 : _config$precision;
 
     this.controlPoints = [x1, y1, x2, y2];
     this.initialPoints = [0, 0, 1, 1];
     this.coords = null;
+    this.this.getCoordAmount(precision);
   }
+
+  /**
+   * get a point's coord on the basis of bezier curve
+   * @param {*} t ratio in the definition of bezier curve
+   */
+
 
   _createClass(Bezier, [{
     key: "getCoord",
@@ -42,10 +54,16 @@ var Bezier = function () {
       var py = coefficient1 * y1 + coefficient2 * y2 + coefficient3;
       return [parseFloat(px.toFixed(3), 10), parseFloat(py.toFixed(3), 10)];
     }
+
+    /**
+     * input the x-axis coord
+     * output the y-axis coord
+     * @param {*} x x-axis coord, scope: [0, 1]
+     */
+
   }, {
     key: "getY",
     value: function getY(x) {
-      this.getCoordAmount(120);
       if (x >= 1) {
         return 1;
       }
@@ -65,6 +83,12 @@ var Bezier = function () {
       var b = axis1[1] - k * axis1[0];
       return k * x + b;
     }
+
+    /**
+     * get some point on bezier curve
+     * @param {*} num the amount of point
+     */
+
   }, {
     key: "getCoordAmount",
     value: function getCoordAmount(num) {
