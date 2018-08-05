@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strictNullChecks": false,
+    "lib": [
+      "es5", "es2015.core", "dom"
+    ],
+    "module": "commonjs",
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    /* ... */
+  }
+}

@@ -106,7 +106,7 @@ new Scroller(domContainer);
 - [x] 支持容器内的滚动
 - [x] 支持取消滚动
 - [x] 使用`webpack`打包项目
+- [x] 使用 `Typescript`
 - [ ] 支持更多自定义配置
 - [ ] 添加使用 `demo` 页面
-- [ ] 使用 `Typescript`
 - [ ] 添加单元测试

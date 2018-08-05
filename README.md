@@ -108,7 +108,7 @@ available `config`'s options：
 - [x] support for scrolling on wrapper
 - [x] support for canceling scroll
 - [x] use `webpack` for packaging project
+- [x] use `Typescript`
 - [ ] support more custom configure
 - [ ] add `demos` page for usage
-- [ ] use `Typescript`
 - [ ] add unit test

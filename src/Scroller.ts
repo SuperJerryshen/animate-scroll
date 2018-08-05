@@ -3,6 +3,11 @@
  */
 import Bezier from './Bezier';
 
+interface scrollConfig {
+  duration?: number;
+  easing?: string;
+}
+
 const bezierEffect = {
   ease: [0.25, 0.1, 0.25, 1],
   linear: [0, 0, 1, 1],
@@ -12,7 +17,12 @@ const bezierEffect = {
 };
 
 export default class Scroller {
-  constructor(wrap) {
+  private timer: number;
+  wrap: HTMLElement;
+  container: HTMLElement;
+  cancelFunc?(): void;
+
+  constructor(wrap: any) {
     this.timer = null;
     this.wrap = wrap || null;
     this.container = wrap || window;
@@ -25,7 +35,7 @@ export default class Scroller {
    * scroll without animation
    * @param {*} top
    */
-  scroll(top) {
+  scroll(top: number) {
     if (this.wrap) {
       this.wrap.scrollTop = top;
     } else {
@@ -48,7 +58,7 @@ export default class Scroller {
    * @param {*} h
    * @param {*} config
    */
-  scrollToY(h = 0, config = {}) {
+  scrollToY(h = 0, config: scrollConfig = {}) {
     if (typeof h !== 'number') {
       throw new Error(`the target height must be a number.`);
     }
@@ -74,7 +84,7 @@ export default class Scroller {
     this.cancel();
     // add wheel event, used for stopping the scroll automatically when user uses the wheel
     container.addEventListener('wheel', this.cancelFunc);
-    this.timer = setInterval(() => {
+    this.timer = window.setInterval(() => {
       // two situations: distance > 0 & distance < 0
       let ratio = bezier.getY(time / duration);
       let move = ratio * distance;
