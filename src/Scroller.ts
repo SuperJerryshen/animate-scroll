@@ -19,10 +19,10 @@ const bezierEffect = {
 export default class Scroller {
   private timer: number;
   wrap: HTMLElement;
-  container: HTMLElement;
+  container: HTMLElement | Window;
   cancelFunc?(): void;
 
-  constructor(wrap?: any) {
+  constructor(wrap?: HTMLElement) {
     this.timer = null;
     this.wrap = wrap || null;
     this.container = wrap || window;
@@ -67,7 +67,6 @@ export default class Scroller {
       throw new Error(`"duration" must be a number.`);
     }
     const y = this.wrap ? this.wrap.scrollTop : window.scrollY;
-    const container = this.wrap || window;
     // get the effet params of transition
     const bezierParams =
       typeof easing === 'string' ? bezierEffect[easing] : easing;
@@ -83,17 +82,24 @@ export default class Scroller {
     // if this.timer is not null, then clearInterval
     this.cancel();
     // add wheel event, used for stopping the scroll automatically when user uses the wheel
-    container.addEventListener('wheel', this.cancelFunc);
-    this.timer = window.setInterval(() => {
-      // two situations: distance > 0 & distance < 0
-      let ratio = bezier.getY(time / duration);
-      let move = ratio * distance;
-      this.scroll(top + move);
-      if (ratio >= 1) {
-        this.cancel();
-      } else {
-        time += interval;
+    this.container.addEventListener('wheel', this.cancelFunc);
+    return new Promise((resolve, reject) => {
+      try {
+        this.timer = window.setInterval(() => {
+          // two situations: distance > 0 & distance < 0
+          let ratio = bezier.getY(time / duration);
+          let move = ratio * distance;
+          this.scroll(top + move);
+          if (ratio >= 1) {
+            this.cancel();
+            resolve(h);
+          } else {
+            time += interval;
+          }
+        }, interval);
+      } catch (error) {
+        reject(error);
       }
-    }, interval);
+    });
   }
 }

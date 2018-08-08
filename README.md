@@ -43,7 +43,9 @@ const scroller = new Scroller(wrap);
 
 // scroll
 scroller.scrollToY(1000);
-scroller.scrollToY(0);
+scroller.scrollToY(0).then(duration => {
+  // call after transition is over
+});
 ```
 
 ## API
@@ -79,6 +81,19 @@ available `config`'s options：
   // transition time
   duration: 600; // default, millisecond
 }
+```
+
+- Returns
+
+(Promise): callback param is the `duration`
+
+```javascript
+import { scrollToY } from '@jerryshen520/animate-scroll';
+
+scrollToY(2000).then(duration => {
+  // the transition is over
+  console.log(duration);
+});
 ```
 
 - Notes

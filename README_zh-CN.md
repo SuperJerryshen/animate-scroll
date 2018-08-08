@@ -21,7 +21,9 @@ import { scrollToY } from '@jerryshen520/animate-scroll';
 
 // 滚动
 scrollToY(1000);
-scrollToY(0);
+scrollToY(0).then(duration => {
+  // 滚动完成后调用
+});
 
 // 自定义配置的滚动
 scrollToY(1000, {
@@ -77,6 +79,19 @@ new Scroller(domContainer);
   // 过渡时间
   duration: 600; // 默认值, 毫秒
 }
+```
+
+- 返回值
+
+(Promise): 回调参数为`duration`
+
+```javascript
+import { scrollToY } from '@jerryshen520/animate-scroll';
+
+scrollToY(2000).then(duration => {
+  // 过渡结束
+  console.log(duration);
+});
 ```
 
 - 说明
