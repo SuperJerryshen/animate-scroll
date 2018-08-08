@@ -6,7 +6,7 @@
     "removeComments": true,
     "strictNullChecks": false,
     "lib": [
-      "es5", "es2015.core", "dom"
+      "es5", "es2015", "dom"
     ],
     "module": "commonjs",
     "outDir": "dist"
