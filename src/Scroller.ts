@@ -58,10 +58,21 @@ export default class Scroller {
    * @param {*} h
    * @param {*} config
    */
-  scrollToY(h = 0, config: scrollConfig = {}) {
-    if (typeof h !== 'number') {
-      throw new Error(`the target height must be a number.`);
+  slideTo(h: number | HTMLElement = 0, config: scrollConfig = {}) {
+    let height: number;
+    if (h instanceof HTMLElement) {
+      height =
+        h.getBoundingClientRect().top +
+        window.scrollY -
+        (this.container instanceof HTMLElement
+          ? this.container.getBoundingClientRect().top
+          : 0);
+    } else if (typeof h === 'number') {
+      height = h;
+    } else {
+      throw new Error(`the target height must be a number or HTMLElement.`);
     }
+    // deconstruct the parameter of config
     const { duration = 600, easing = 'ease' } = config;
     if (typeof duration !== 'number') {
       throw new Error(`"duration" must be a number.`);
@@ -75,10 +86,10 @@ export default class Scroller {
     }
     const bezier = new Bezier(...bezierParams);
     let top = y;
-    let distance = h - y;
+    let distance = height - y;
     let interval = 16.67;
     let time = 0;
-    if (h === top) return;
+    if (height === top) return;
     // if this.timer is not null, then clearInterval
     this.cancel();
     // add wheel event, used for stopping the scroll automatically when user uses the wheel
@@ -92,7 +103,7 @@ export default class Scroller {
           this.scroll(top + move);
           if (ratio >= 1) {
             this.cancel();
-            resolve(h);
+            resolve(height);
           } else {
             time += interval;
           }
