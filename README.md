@@ -1,6 +1,6 @@
 # Animate-Scroll
 
-> Scroll to position with animation, through using Animate-Scroll
+> Scroll to position with animation, through using Animate-Scroll, some [demos here](https://s.codepen.io/SuperJerryshen/debug/NBBrEP/gaAeYZzXobyA).
 
 [中文文档](https://github.com/SuperJerryshen/animate-scroll/blob/master/README_zh-CN.md)
 
@@ -19,14 +19,14 @@ yarn add @jerryshen520/animate-scroll
 ### Only scroll on window
 
 ```javascript
-import { scrollToY } from '@jerryshen520/animate-scroll';
+import { slideTo } from '@jerryshen520/animate-scroll';
 
 // scroll
-scrollToY(1000);
-scrollToY(0);
+slideTo(1000);
+slideTo(0);
 
 // scroll with configure
-scrollToY(1000, {
+slideTo(1000, {
   duration: 1200,
   easing: 'linear',
 });
@@ -42,8 +42,8 @@ const wrap = document.getElementById('wrap');
 const scroller = new Scroller(wrap);
 
 // scroll
-scroller.scrollToY(1000);
-scroller.scrollToY(0).then(duration => {
+scroller.slideTo(1000);
+scroller.slideTo(0).then(duration => {
   // call after transition is over
 });
 ```
@@ -65,10 +65,10 @@ const domContainer = document.createElement('div');
 new Scroller(domContainer);
 ```
 
-### Scroller.prototype.scrollToY
+### Scroller.prototype.slideTo
 
 - Function
-- Params(`YCoord`: `number`, `config`?: `object`)
+- Params(`YCoord`: `number` | `HTMLElement`, `config`?: `object`)
 
 available `config`'s options：
 
@@ -88,9 +88,12 @@ available `config`'s options：
 (Promise): callback param is the `duration`
 
 ```javascript
-import { scrollToY } from '@jerryshen520/animate-scroll';
+import { slideTo } from '@jerryshen520/animate-scroll';
 
-scrollToY(2000).then(duration => {
+// pass HTMLElement.
+slideTo(document.getElementById('demo'));
+// pass number and print 'duration' at the end of scrolling.
+slideTo(2000).then(duration => {
   // the transition is over
   console.log(duration);
 });
@@ -118,12 +121,4 @@ scrollToY(2000).then(duration => {
 
 ## Todo List
 
-- [x] custom effect of transition
-- [x] custom duration of transition
-- [x] support for scrolling on wrapper
-- [x] support for canceling scroll
-- [x] use `webpack` for packaging project
-- [x] use `Typescript`
 - [ ] support more custom configure
-- [ ] add `demos` page for usage
-- [ ] add unit test

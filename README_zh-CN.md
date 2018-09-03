@@ -1,6 +1,6 @@
 # Animate-Scroll
 
-> 使用 Animate-Scroll，可以利用动画过渡至指定高度
+> 使用 Animate-Scroll，可以利用动画过渡至指定高度，在[这里](https://s.codepen.io/SuperJerryshen/debug/NBBrEP/gaAeYZzXobyA)可以访问到一些使用案例。
 
 ## 安装
 
@@ -17,16 +17,16 @@ yarn add @jerryshen520/animate-scroll
 ### 仅在 window 下滚动
 
 ```javascript
-import { scrollToY } from '@jerryshen520/animate-scroll';
+import { slideTo } from '@jerryshen520/animate-scroll';
 
 // 滚动
-scrollToY(1000);
-scrollToY(0).then(duration => {
+slideTo(1000);
+slideTo(0).then(duration => {
   // 滚动完成后调用
 });
 
 // 自定义配置的滚动
-scrollToY(1000, {
+slideTo(1000, {
   duration: 1200,
   easing: 'linear',
 });
@@ -42,8 +42,8 @@ const wrap = document.getElementById('wrap');
 const scroller = new Scroller(wrap);
 
 // 滚动
-scroller.scrollToY(1000);
-scroller.scrollToY(0);
+scroller.slideTo(1000);
+scroller.slideTo(0);
 ```
 
 ## API
@@ -63,10 +63,10 @@ const domContainer = document.createElement('div');
 new Scroller(domContainer);
 ```
 
-### Scroller.prototype.scrollToY
+### Scroller.prototype.slideTo
 
 - 函数
-- 参数(`YCoord`: `number`, `config`?: `object`)
+- 参数(`YCoord`: `number` | `HTMLElement`, `config`?: `object`)
 
 `config`'可用的配置选项：
 
@@ -86,9 +86,12 @@ new Scroller(domContainer);
 (Promise): 回调参数为`duration`
 
 ```javascript
-import { scrollToY } from '@jerryshen520/animate-scroll';
+import { slideTo } from '@jerryshen520/animate-scroll';
 
-scrollToY(2000).then(duration => {
+// 传入HTMLElement
+slideTo(document.getElementById('demo'));
+// 传入数字，并在滚动完成后打印 duration
+slideTo(2000).then(duration => {
   // 过渡结束
   console.log(duration);
 });
@@ -116,12 +119,4 @@ scrollToY(2000).then(duration => {
 
 ## Todo List
 
-- [x] 自定义过渡效果
-- [x] 自定义过渡时间
-- [x] 支持容器内的滚动
-- [x] 支持取消滚动
-- [x] 使用`webpack`打包项目
-- [x] 使用 `Typescript`
 - [ ] 支持更多自定义配置
-- [ ] 添加使用 `demo` 页面
-- [ ] 添加单元测试
