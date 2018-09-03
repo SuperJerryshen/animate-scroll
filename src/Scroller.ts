@@ -59,9 +59,14 @@ export default class Scroller {
    * @param {*} config
    */
   slideTo(h: number | HTMLElement = 0, config: scrollConfig = {}) {
-    let height:number;
+    let height: number;
     if (h instanceof HTMLElement) {
-      height = h.getBoundingClientRect().top + window.scrollY;
+      height =
+        h.getBoundingClientRect().top +
+        window.scrollY -
+        (this.container instanceof HTMLElement
+          ? this.container.getBoundingClientRect().top
+          : 0);
     } else if (typeof h === 'number') {
       height = h;
     } else {
